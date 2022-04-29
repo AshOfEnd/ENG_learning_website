@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "Course";
+}
+
+<div class="text-center">
+    <h1 class="display-4 ">chuj</h1>
+    <div>
+
+        <a class="btn btn-primary" asp-controller="Course" asp-action="Create">Create New Product</a>
+
+    </div>
+    <table class="table">
+        <thead>
+            
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                   <th>@Html.DisplayNameFor(model => model.Difficulty)</th>
+             
+                   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td class="align-middle">
+                   @item.Name
+
+                </td>
+                 <td  class="align-middle">
+                   @item.Difficulty
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
