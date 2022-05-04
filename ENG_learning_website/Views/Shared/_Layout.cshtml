@@ -7,41 +7,55 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ENG_learning_website.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ENG_learning_website</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                  
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">kurs</a>
-                        </li>
-                       
-                    </ul>
-                      <partial name="_LoginPartial.cshtml"/>
+        <div id="topbar">
+            <div id="topbar-logo">
+                <a asp-area=""  asp-controller="Home" asp-action="Index">
+                    <img class="logo" src="~/img/logo.jpg"/>
+                </a>
+                    </div>
+            <div id="topbar-button">
+                  <a asp-area=""  asp-controller="Home"  asp-action="Index">
+                <div class="topbar-button-button">
+                  HOME
                 </div>
+                       </a>
+                <a asp-area=""  asp-controller="Course" asp-action="Index">
+                 <div class="topbar-button-button">
+                    COURSES
+                </div>
+                 </a>
             </div>
-        </nav>
+           
+            <div id="topbar-login">
+                  <partial name="_LoginPartial.cshtml"/>
+            </divid="topbar-login">
+
+
+    <!--         <div id="topbar-login">
+                <div class="topbar-button-login">
+                    REGISTER
+                </div>
+                 <div class="topbar-button-login">
+                    LOGIN
+                </div>
+            </div> -->
+
+        </div>
     </header>
-    <div class="container">
+  <!-- <div class="container"> -->
         <main role="main" class="pb-3">
             @RenderBody()
+           
         </main>
-    </div>
+  <!--  </div> -->
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ENG_learning_website - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div id="footer">
+            &copy; 2022 - Aplikacja Do Nauki Jezyków - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
