@@ -13,14 +13,14 @@
 	 float:left;
  }
  #topbar-button{
-	 width:55%;
+	 width:35%;
 	height:85px;
 	 float:left; 
 	
  }
   
  #topbar-login{
-	  width:30%;
+	  width:50%;
 	height:85px;
 	 float:left;
  }
@@ -60,6 +60,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
     animation-duration: 1s;
+	 border:none;
  }
  .topbar-button-login:hover{
 	  background: linear-gradient(#000, #000);
@@ -67,7 +68,47 @@
   -webkit-text-fill-color: transparent;
 
  }
- 
+
+.topbar-button-mail{
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 17px;
+	height:70px;
+	float:right;
+	font-weight:bold;
+	font-size: 23px;
+	background: linear-gradient(90deg, rgba(204,90,174,1) 10%, rgba(96,90,204,1) 90%);
+	color:white;
+	animation-duration: 1s;
+}
+.topbar-button-mail:hover{
+	background: linear-gradient(#000, #000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+
+.topbar-button-logout {
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 0px;
+	height: 60px;
+	float: right;
+	font-weight: bold;
+	font-size: 23px;
+	background: linear-gradient(90deg, rgba(204, 90, 174, 1) 10%, rgba(96, 90, 204, 1) 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation-duration: 1s;
+	border: none;
+}
+
+.topbar-button-logout:hover{
+	background: linear-gradient(#000, #000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
 #baner {
 	background: rgb(204,90,174);
 	background: linear-gradient(90deg, rgba(204,90,174,1) 10%, rgba(96,90,204,1) 90%);
@@ -85,7 +126,7 @@
 	width:35%;
 	height:100%;
 	float:left;
-	margin;		
+
 }
 #obrazek{
 	display:block;
