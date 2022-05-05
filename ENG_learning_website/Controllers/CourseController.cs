@@ -24,8 +24,7 @@ namespace ENG_learning_website.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-
-            return View();
+          return View();
         }
 
         

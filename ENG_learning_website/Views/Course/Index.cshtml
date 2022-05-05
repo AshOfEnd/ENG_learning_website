@@ -3,20 +3,18 @@
     ViewData["Title"] = "Course";
 }
 
-<div class="text-center">
-    <h1 class="display-4 ">Kursy</h1>
-    <div>
+<div class="kursy-container">
 
-        <a class="btn btn-primary" asp-controller="Course" asp-action="Create">Create New Course</a>
-
-    </div>
-    <table class="table">
+        <span class="create-button">
+            <a   asp-controller="Course" asp-action="Create">+</a>
+            </span>
+    <table class="tabela-kursy">
         <thead>
             
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
                    <th>@Html.DisplayNameFor(model => model.Difficulty)</th>
-             
+                    <th> EXERCISE</th>
                    
             </tr>
         </thead>
@@ -24,13 +22,16 @@
             @foreach(var item in Model)
             {
             <tr>
-                <td class="align-middle">
+                <td >
                    @item.Name
 
                 </td>
-                 <td  class="align-middle">
+                 <td >
                    @item.Difficulty
 
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="zad1" asp-action="Index" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
                 </td>
             </tr>
             }
