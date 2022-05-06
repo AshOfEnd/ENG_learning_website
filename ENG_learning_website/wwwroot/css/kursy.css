@@ -14,11 +14,12 @@
     margin-left: 43%;
     background: linear-gradient(90deg, rgba(204,90,174,1) 10%, rgba(96,90,204,1) 90%);
     color: white;
-    box-shadow: 0px -5px 50px 1px rgba(66, 68, 90, 0.7);
+    box-shadow: 0px -5px 50px -1px rgba(199, 94, 214, 1);
     padding: 15px;
     border-radius: 50%;
    font-size: 25px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 .create-button a{
     text-decoration: none;
@@ -86,4 +87,30 @@
 .nazwa-kurs{
     padding: 10px;
     width: 300px;
+}
+.create-button-fiszki{
+    display:block;
+    width: 150px;
+    height: 70px;
+    margin-right: 40%;
+    margin-left: 43%;
+    background: linear-gradient(90deg, rgba(204,90,174,1) 10%, rgba(96,90,204,1) 90%);
+    color: white;
+    box-shadow: 0px -5px 50px -10px rgba(199, 94, 214, 1);
+    padding: 15px;
+    border-radius: 20%;
+    font-size: 25px;
+    font-weight: bold;
+    position: fixed;
+    top: 135px;
+    right: -550px;
+}
+.create-button-fiszki a{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.create-button-fiszki:hover {
+    background: linear-gradient(90deg, #605ACCFF, #CC5AAEFF);
 }

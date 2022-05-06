@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ENG_learning_website.Models.Dictionary>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="body-fiszki">
+
+
+    @foreach (var item in Model)
+    {
+     <div class="fiszka-row">
+        <div class="fiszka-main">
+            <div class="fiszka-gradient">
+                <div class="fiszka-content">
+                    <p class="lang-a"> @Html.DisplayFor(modelItem => item.meaningPl)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="fiszka-main">
+            <div class="fiszka-gradient">
+                <div class="fiszka-content">
+                    <p class="lang-a">@Html.DisplayFor(modelItem => item.meaningOb)</p>
+                </div>
+            </div>
+        </div>
+    </div>   
+    }
+
+</div>

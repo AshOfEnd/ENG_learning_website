@@ -1,0 +1,30 @@
+﻿@model ENG_learning_website.Models.Dictionary
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Dictionary</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.meaningPl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.meaningPl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.meaningOb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.meaningOb)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.DictId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

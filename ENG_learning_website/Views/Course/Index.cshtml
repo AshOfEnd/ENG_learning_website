@@ -31,11 +31,15 @@
 
                 </td>
                 <td>
-                    <a asp-area="" asp-controller="zad1" asp-action="Index" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
+                    <a asp-area="" asp-controller="zad1" asp-action="Index" asp-route-id="@item.Id" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
                 </td>
             </tr>
             }
         </tbody>
     </table>
+
+    <span class="create-button-fiszki">
+            <a   asp-controller="Dictionaries" asp-action="Index">FISZKI</a>
+            </span>
     
 </div>
