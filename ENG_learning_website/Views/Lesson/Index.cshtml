@@ -1,20 +1,20 @@
-﻿@model IEnumerable<Course>
+﻿@model IEnumerable<ENG_learning_website.Models.Lesson>
 @{
-    ViewData["Title"] = "Course";
+    ViewData["Title"] = "Lesson";
 }
 
 <div class="kursy-container">
 
         <span class="create-button">
-            <a   asp-controller="Course" asp-action="Create">+</a>
+            <a   asp-controller="Lesson" asp-action="Create">+</a>
             </span>
     <table class="tabela-kursy">
         <thead>
             
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
-                   <th>@Html.DisplayNameFor(model => model.Difficulty)</th>
-                    <th> EXERCISE</th>
+                   <th>@Html.DisplayNameFor(model => model.NoobsHolder)</th>
+                    <th>Course Name</th>
                    
             </tr>
         </thead>
@@ -27,19 +27,18 @@
 
                 </td>
                  <td >
-                   @item.Difficulty
+                   @item.NoobsHolder
 
                 </td>
-                <td>
-                    <a   asp-action="Details" asp-route-id="@item.Id" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
+                 <td >
+                   @item.Course.Name
+
                 </td>
             </tr>
             }
         </tbody>
     </table>
 
-    <span class="create-button-fiszki">
-            <a   asp-controller="Dictionaries" asp-action="Index">FISZKI</a>
-            </span>
+   
     
 </div>

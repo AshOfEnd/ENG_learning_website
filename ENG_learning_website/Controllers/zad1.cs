@@ -10,6 +10,9 @@ using ENG_learning_website.Models;
 
 namespace ENG_learning_website.Controllers
 {
+    //BABO DAWAJ NAZWY KONTROLEROW TAK JAK RESZTA JEST <3
+
+
 
     public class zad1 : Controller
     {
@@ -32,5 +35,9 @@ namespace ENG_learning_website.Controllers
             return View();
         }
               
+        //public async Task<IActionResult> Get(int id)
+        //{
+            
+        //}
     }
 }

@@ -1,0 +1,47 @@
+﻿@model ENG_learning_website.Models.Course
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<div class="kursy-container">
+
+        <span class="create-button">
+            <a   asp-controller="Lesson" asp-action="Create">+</a>
+            </span>
+    <table class="tabela-kursy">
+        <thead>
+            
+            <tr>
+                <th>lekcja</th>
+                   <th>dificulty</th>
+                
+                   
+            </tr>
+        </thead>
+        <tbody>
+     
+
+
+             @foreach(var item in Model.Lessons)
+            {
+            <tr>
+                <td >
+                   
+                   @item.Name
+
+                </td>
+                 <td >
+                   
+                   @item.NoobsHolder
+
+                </td>
+                <td>
+                 
+                    <a class="btn btn-primary" asp-route-id="@item.Id" asp-controller="Lesson" asp-action="Details">detale</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+  

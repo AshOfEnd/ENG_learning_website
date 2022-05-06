@@ -1,9 +1,9 @@
-﻿@model ENG_learning_website.Models.Course
+﻿@model ENG_learning_website.Models.Lesson
 @{
     ViewData["Title"] = "Create";
 }
 
-<p class="create-kurs">CREATE COURSE</p>
+<p class="create-kurs">CREATE LESSON</p>
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="kurs-tworzenie-zawartosc">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -16,13 +16,20 @@
             </div>
             <span asp-validation-for="Name" class="text-danger"></span>
             <div class="nazwa-kurs">
-                <label asp-for="Difficulty"></label>
+                <label asp-for="NoobsHolder"></label>
             </div>
             <div class="nazwa-kurs5">
-                <input asp-for="Difficulty" min="1" max="5" class="form-control"  />
+                <input asp-for="NoobsHolder"  min="1" max="5" class="form-control"  />
             </div>
-            <span asp-validation-for="Difficulty" class="text-danger"></span>
-            <input asp-action="Index" type="submit"  class="button-kurs" value="Back to List" />
+            <span asp-validation-for="NoobsHolder" class="text-danger"></span>
+            <div>
+                <label asp-for="CourseId"></label>
+
+            </div>
+            <div>
+                <select asp-for="CourseId" asp-items="ViewBag.Courses"></select>
+            </div>
+            <input asp-action="Index" asp-controller="Course" type="submit"  class="button-kurs" value="Back to List" />
             @Html.AntiForgeryToken()
             <input type="submit" class="button-kurs" value="Create" />
         </div>

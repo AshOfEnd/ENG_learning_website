@@ -28,11 +28,13 @@ builder.Services.AddAuthentication()
     googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
 
     googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+
 });
 
 
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ILessonService, LessonService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

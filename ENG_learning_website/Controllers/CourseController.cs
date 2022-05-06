@@ -2,6 +2,7 @@
 using ENG_learning_website.Data.services;
 using ENG_learning_website.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ENG_learning_website.Controllers
 {
@@ -39,7 +40,14 @@ namespace ENG_learning_website.Controllers
 
 
 
-
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var courseDropDownData=await _service.getDropDownValues();
+            ViewBag.Lessons = new SelectList(courseDropDownData.Lessons,"Id","Name");
+            var CourseDetails = await _service.GetByIdAsync(id);
+            return View(CourseDetails);
+        }
 
 
     }

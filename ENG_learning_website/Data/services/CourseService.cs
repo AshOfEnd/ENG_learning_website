@@ -29,9 +29,19 @@ namespace ENG_learning_website.Data.services
             return result;
         }
 
-        public Course GetById(int id)
+        public async Task <Course> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result=await _dbContext.Courses.FirstOrDefaultAsync(x=>x.Id==id);
+            return result;
+        }
+
+        public async Task<CourseDropDownVm> getDropDownValues()
+        {
+            var response = new CourseDropDownVm()
+            {
+                Lessons = await _dbContext.Lessons.OrderBy(x => x.Name).ToListAsync()
+            };
+         return response;
         }
 
         public Course Update(int id, Course course)

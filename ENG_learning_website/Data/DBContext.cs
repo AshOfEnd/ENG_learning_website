@@ -18,6 +18,7 @@ namespace ENG_learning_website.Data
             });
 
             modelBuilder.Entity<ClientLang>().HasOne(m => m.Language).WithMany(am => am.ClientLangs).HasForeignKey(m => m.LangId);
+            //modelBuilder.Entity<Course>().Property(x => x.Difficulty).IsRequired();  //maxcharacterLenght do dlugosci 
             modelBuilder.Entity<ClientLang>().HasOne(m => m.Client).WithMany(am => am.Clientlangs).HasForeignKey(m => m.ClientId);
             base.OnModelCreating(modelBuilder);
 
