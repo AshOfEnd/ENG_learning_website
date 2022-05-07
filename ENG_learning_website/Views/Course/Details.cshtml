@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-<br />
+
 <div class="kursy-container">
 
         <span class="create-button">
@@ -12,18 +12,21 @@
         <thead>
             
             <tr>
-                <th>lekcja</th>
-                   <th>dificulty</th>
-                
+                <th>LESSON</th>
+                   <th>DIFFICULTY</th>
+                <th></th>
                    
             </tr>
         </thead>
         <tbody>
      
 
-
+             @if(Model.Lessons!=null)
+                {
+                
              @foreach(var item in Model.Lessons)
             {
+
             <tr>
                 <td >
                    
@@ -41,6 +44,9 @@
                 </td>
             </tr>
             }
+                }
+
+
         </tbody>
     </table>
 

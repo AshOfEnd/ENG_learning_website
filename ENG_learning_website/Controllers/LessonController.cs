@@ -27,7 +27,7 @@ namespace ENG_learning_website.Controllers
             
             var lessonDetails = await _service.GetByIdAsync(id);
 
-            if (lessonDetails == null) return View("NotFound");
+            if (lessonDetails == null) return View();
             return View(lessonDetails);
         }
 
