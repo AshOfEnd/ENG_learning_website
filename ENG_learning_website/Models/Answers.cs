@@ -8,9 +8,9 @@ namespace ENG_learning_website.Models
         public string Answer { get; set; }
 
         public int TaskId { get; set; }
-        [ForeignKey("TaskId")]
+        [ForeignKey("AssigmentId")]
 
-        public Task Task { get; set; }
+        public Assignment Task { get; set; }
 
     }
 }

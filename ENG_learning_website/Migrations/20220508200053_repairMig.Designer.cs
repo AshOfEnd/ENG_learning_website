@@ -4,6 +4,7 @@ using ENG_learning_website.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ENG_learning_website.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20220508200053_repairMig")]
+    partial class repairMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,15 +36,12 @@ namespace ENG_learning_website.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AssigmentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssigmentId");
+                    b.HasIndex("TaskId");
 
                     b.ToTable("Answers");
                 });
@@ -69,7 +68,7 @@ namespace ENG_learning_website.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Assignment");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("ENG_learning_website.Models.Client", b =>
@@ -211,7 +210,7 @@ namespace ENG_learning_website.Migrations
                 {
                     b.HasOne("ENG_learning_website.Models.Assignment", "Task")
                         .WithMany("Answers")
-                        .HasForeignKey("AssigmentId")
+                        .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

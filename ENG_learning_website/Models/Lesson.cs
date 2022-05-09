@@ -13,6 +13,6 @@ namespace ENG_learning_website.Models
         [ForeignKey ("CourseId")]
         public Course Course { get; set; }
 
-        public List<Task> Tasks { get; set; }
+        public List<Assignment> Tasks { get; set; }
     }
 }

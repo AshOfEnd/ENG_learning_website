@@ -2,7 +2,7 @@
 
 namespace ENG_learning_website.Models
 {
-    public class Task
+    public class Assignment
     {
         public int Id { get; set; }
         public string text { get; set; }

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ENG_learning_website.Models.Assignment>
+@{
+    ViewData["Title"] = "Lesson";
+}
+
+<div class="kursy-container">
+
+        <span class="create-button">
+            <a   asp-controller="Lesson" asp-action="Create">+</a>
+            </span>
+    <table class="tabela-kursy">
+        <thead>
+            
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.LessonId)</th>
+                
+                    <th> Lesson ID</th>
+
+                     <th>@Html.DisplayNameFor(model => model.LessonId)</th>
+                
+                    <th> Lesson ID</th>
+                   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td >
+                   @item.text
+
+                </td>
+                
+                 <td >
+                   @item.NoobsHolder
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+   
+    
+</div>
