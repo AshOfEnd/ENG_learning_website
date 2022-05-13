@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace ENG_learning_website.Migrations
+namespace ENG_learning_website.Migrations.IDB
 {
-    public partial class nazwa : Migration
+    public partial class czydziala : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

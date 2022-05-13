@@ -1,7 +1,9 @@
-﻿@model IEnumerable<ENG_learning_website.Models.Assignment>
+﻿@model Assignment
 @{
     ViewData["Title"] = "Lesson";
 }
+
+
 
 <div class="kursy-container">
 
@@ -12,31 +14,63 @@
         <thead>
             
             <tr>
-                <th>@Html.DisplayNameFor(model => model.LessonId)</th>
+                <th>@Html.DisplayNameFor(model => model)</th>
                 
-                    <th> Lesson ID</th>
+             
 
-                     <th>@Html.DisplayNameFor(model => model.LessonId)</th>
+                   
                 
-                    <th> Lesson ID</th>
                    
             </tr>
         </thead>
         <tbody>
-            @foreach(var item in Model)
+
+           <td>@Model.Answer.TextAnswer</td>
+           <td>@Model.AssignmentText</td>
+          
+   @*    @if(Model.Answer!=null)
+                {
+                
+             @foreach(var item in Model)
             {
+
             <tr>
                 <td >
-                   @item.text
+                   
+                   @item.TextAnswer
 
                 </td>
-                
                  <td >
-                   @item.NoobsHolder
+                   
+                   @item.Real
 
+                </td>
+                <td>
+                 
+                    <a class="btn btn-primary" asp-route-id="@item.Id" asp-controller="Assignment" asp-action="Index">detale</a>
                 </td>
             </tr>
             }
+                }
+
+            <div>*@
+       @*      
+           @foreach(var item in Model.lesson.Assignments)
+            {
+
+            <tr>
+                <td >
+                   
+                   @item.AssignmentText
+
+             
+             
+                    <a class="btn btn-primary" asp-route-id="@item.Id" asp-controller="Assignment" asp-action="Index">detale</a>
+                </td>
+            </tr>
+            }*@
+   
+            </div>
         </tbody>
     </table>
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ENG_learning_website.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220508200406_reppId")]
-    partial class reppId
+    [Migration("20220512161922_tabele1")]
+    partial class tabele1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,19 +32,14 @@ namespace ENG_learning_website.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Answer")
+                    b.Property<bool>("Real")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TextAnswer")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AssigmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AssigmentId");
 
                     b.ToTable("Answers");
                 });
@@ -57,19 +52,21 @@ namespace ENG_learning_website.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AssignmentText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("NoobsHolder")
+                    b.Property<int>("answersId")
                         .HasColumnType("int");
-
-                    b.Property<string>("text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LessonId");
+
+                    b.HasIndex("answersId");
 
                     b.ToTable("Assignment");
                 });
@@ -209,24 +206,21 @@ namespace ENG_learning_website.Migrations
                     b.ToTable("Lessons");
                 });
 
-            modelBuilder.Entity("ENG_learning_website.Models.Answers", b =>
-                {
-                    b.HasOne("ENG_learning_website.Models.Assignment", "Task")
-                        .WithMany("Answers")
-                        .HasForeignKey("AssigmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Task");
-                });
-
             modelBuilder.Entity("ENG_learning_website.Models.Assignment", b =>
                 {
                     b.HasOne("ENG_learning_website.Models.Lesson", "lesson")
-                        .WithMany("Tasks")
+                        .WithMany("Assignments")
                         .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("ENG_learning_website.Models.Answers", "Answer")
+                        .WithMany()
+                        .HasForeignKey("answersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Answer");
 
                     b.Navigation("lesson");
                 });
@@ -236,13 +230,13 @@ namespace ENG_learning_website.Migrations
                     b.HasOne("ENG_learning_website.Models.Client", "Client")
                         .WithMany("Clientlangs")
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ENG_learning_website.Models.Language", "Language")
                         .WithMany("ClientLangs")
                         .HasForeignKey("LangId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Client");
@@ -254,7 +248,8 @@ namespace ENG_learning_website.Migrations
                 {
                     b.HasOne("ENG_learning_website.Models.Language", null)
                         .WithMany("Courses")
-                        .HasForeignKey("LanguageId");
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ENG_learning_website.Models.Language", b =>
@@ -262,7 +257,7 @@ namespace ENG_learning_website.Migrations
                     b.HasOne("ENG_learning_website.Models.Dictionary", "dictionary")
                         .WithMany("Languages")
                         .HasForeignKey("DicId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("dictionary");
@@ -273,15 +268,10 @@ namespace ENG_learning_website.Migrations
                     b.HasOne("ENG_learning_website.Models.Course", "Course")
                         .WithMany("Lessons")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("ENG_learning_website.Models.Assignment", b =>
-                {
-                    b.Navigation("Answers");
                 });
 
             modelBuilder.Entity("ENG_learning_website.Models.Client", b =>
@@ -308,7 +298,7 @@ namespace ENG_learning_website.Migrations
 
             modelBuilder.Entity("ENG_learning_website.Models.Lesson", b =>
                 {
-                    b.Navigation("Tasks");
+                    b.Navigation("Assignments");
                 });
 #pragma warning restore 612, 618
         }

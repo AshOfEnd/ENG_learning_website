@@ -36,6 +36,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ILessonService, LessonService>();
 builder.Services.AddScoped<IAssignmentService, AssignmentService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
