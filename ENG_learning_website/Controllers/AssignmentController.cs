@@ -41,7 +41,7 @@ namespace ENG_learning_website.Controllers
         public  IActionResult Index(int id)
         {
 
-              var result= _dbContext.Assignment.Include(x=>x.Answers).Where(a=>a.LessonId==id ).OrderBy(x=>x.AssignmentText).ToList();
+              var result= _dbContext.Assignment.Include(x=>x.Answer).Where(a=>a.LessonId==id ).Where(z=>z.answersId==z.Answer.Id).OrderBy(x=>x.AssignmentText).ToList();
             //var viewModel = new AnswerAsignmentModel();
             // viewModel.Assignments = _dbContext.Assignment.Include(i=>i.Answer).Where(a=>a.LessonId==id).OrderBy(i=>i.AssignmentText).ToList();
 

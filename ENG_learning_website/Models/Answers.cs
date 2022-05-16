@@ -9,10 +9,7 @@ namespace ENG_learning_website.Models
 
         public bool Real { get; set; }
 
-        public int ZadId { get; set; }
-        [ForeignKey("ZadId")]
 
-        public Assignment assignment { get; set; } 
  
     }
 }

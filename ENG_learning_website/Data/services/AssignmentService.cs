@@ -32,7 +32,7 @@ namespace ENG_learning_website.Data.services
         }
         public  async Task<Assignment> GetByIdAsync(int id)
         {
-            var result = await _dbContext.Assignment.Include(p => p.Answers).ToListAsync();
+            var result = await _dbContext.Assignment.Include(p => p.Answer).ToListAsync();
             return result.FirstOrDefault(x => x.Id == id);
 
             //var query=_dbContext.Answers.AsQueryable();
