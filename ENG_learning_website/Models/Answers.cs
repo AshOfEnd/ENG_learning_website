@@ -1,4 +1,6 @@
-﻿namespace ENG_learning_website.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ENG_learning_website.Models
 {
     public class Answers
     {
@@ -6,6 +8,8 @@
         public string TextAnswer { get; set; }
 
         public bool Real { get; set; }
-        
+
+
+ 
     }
 }

@@ -30,12 +30,24 @@ namespace ENG_learning_website.Controllers
 
         //    return View();
         //}
-        public async Task<IActionResult> Index(int id)
+        //public async Task<IActionResult> Index(int id)
+        //{
+        //    var courseDropDownData = await _service.getDropDownValues();
+        //    ViewBag.Lessons = new SelectList(courseDropDownData.Answers, "Id", "Name");
+        //    var CourseDetails = await _service.GetByIdAsync(id);
+        //    return View(CourseDetails);
+        //}
+
+        public  IActionResult Index(int id)
         {
-            var courseDropDownData = await _service.getDropDownValues();
-            ViewBag.Lessons = new SelectList(courseDropDownData.Answers, "Id", "Name");
-            var CourseDetails = await _service.GetByIdAsync(id);
-            return View(CourseDetails);
+
+              var result= _dbContext.Assignment.Include(x=>x.Answer).Where(a=>a.LessonId==id ).Where(z=>z.answersId==z.Answer.Id).OrderBy(x=>x.AssignmentText).ToList();
+            //var viewModel = new AnswerAsignmentModel();
+            // viewModel.Assignments = _dbContext.Assignment.Include(i=>i.Answer).Where(a=>a.LessonId==id).OrderBy(i=>i.AssignmentText).ToList();
+
+         //  var resultt=_dbContext.Answers.Include(x=>x.assignment).Where(a=>a.assignment.LessonId==id).OrderBy(x=>x.assignment.AssignmentText).ToList();
+
+            return View(result);
         }
 
 

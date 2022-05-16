@@ -20,5 +20,7 @@ namespace ENG_learning_website.Data.services
         Task<AnswersDropDownVm> getDropDownValues();
        
         List<Answers> GetAnswers();
+
+        Task<IQueryable<Assignment>> GetAnsAsig(int id);
     }
 }
