@@ -28,8 +28,11 @@
                 </td>
 
                  <td>
-                 @item.Answer.TextAnswer
-                </td>
+                 @foreach(var cos in item.Answers)
+                        {
+                            @cos.TextAnswer
+                        }
+                    </td>
               </tr>
                 
             }

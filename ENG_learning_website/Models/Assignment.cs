@@ -12,10 +12,7 @@ namespace ENG_learning_website.Models
         [ForeignKey("LessonId")]
         public Lesson lesson { get; set; }
 
-        public int answersId { get; set; }
-        [ForeignKey("answersId")]
-        
-        public Answers Answer { get; set; }
+       public List<Answers> Answers { get; set; }
   
 
     }
