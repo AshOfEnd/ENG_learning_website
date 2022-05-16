@@ -37,7 +37,12 @@ namespace ENG_learning_website.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ZadId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ZadId");
 
                     b.ToTable("Answers");
                 });
@@ -57,14 +62,9 @@ namespace ENG_learning_website.Migrations
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("answersId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("LessonId");
-
-                    b.HasIndex("answersId");
 
                     b.ToTable("Assignment");
                 });
@@ -204,6 +204,17 @@ namespace ENG_learning_website.Migrations
                     b.ToTable("Lessons");
                 });
 
+            modelBuilder.Entity("ENG_learning_website.Models.Answers", b =>
+                {
+                    b.HasOne("ENG_learning_website.Models.Assignment", "assignment")
+                        .WithMany("answers")
+                        .HasForeignKey("ZadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("assignment");
+                });
+
             modelBuilder.Entity("ENG_learning_website.Models.Assignment", b =>
                 {
                     b.HasOne("ENG_learning_website.Models.Lesson", "lesson")
@@ -211,14 +222,6 @@ namespace ENG_learning_website.Migrations
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("ENG_learning_website.Models.Answers", "Answer")
-                        .WithMany()
-                        .HasForeignKey("answersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Answer");
 
                     b.Navigation("lesson");
                 });
@@ -270,6 +273,11 @@ namespace ENG_learning_website.Migrations
                         .IsRequired();
 
                     b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("ENG_learning_website.Models.Assignment", b =>
+                {
+                    b.Navigation("answers");
                 });
 
             modelBuilder.Entity("ENG_learning_website.Models.Client", b =>

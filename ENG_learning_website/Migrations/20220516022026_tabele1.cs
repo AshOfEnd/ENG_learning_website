@@ -9,20 +9,6 @@ namespace ENG_learning_website.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Answers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TextAnswer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Real = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Clients",
                 columns: table => new
                 {
@@ -145,18 +131,11 @@ namespace ENG_learning_website.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AssignmentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LessonId = table.Column<int>(type: "int", nullable: false),
-                    answersId = table.Column<int>(type: "int", nullable: false)
+                    LessonId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Assignment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Assignment_Answers_answersId",
-                        column: x => x.answersId,
-                        principalTable: "Answers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Assignment_Lessons_LessonId",
                         column: x => x.LessonId,
@@ -165,10 +144,31 @@ namespace ENG_learning_website.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Answers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TextAnswer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Real = table.Column<bool>(type: "bit", nullable: false),
+                    ZadId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Answers_Assignment_ZadId",
+                        column: x => x.ZadId,
+                        principalTable: "Assignment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Assignment_answersId",
-                table: "Assignment",
-                column: "answersId");
+                name: "IX_Answers_ZadId",
+                table: "Answers",
+                column: "ZadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assignment_LessonId",
@@ -199,19 +199,19 @@ namespace ENG_learning_website.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Assignment");
+                name: "Answers");
 
             migrationBuilder.DropTable(
                 name: "ClientLang");
 
             migrationBuilder.DropTable(
-                name: "Answers");
-
-            migrationBuilder.DropTable(
-                name: "Lessons");
+                name: "Assignment");
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Lessons");
 
             migrationBuilder.DropTable(
                 name: "Courses");

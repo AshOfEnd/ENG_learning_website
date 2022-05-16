@@ -28,8 +28,11 @@
                 </td>
 
                  <td>
-                 @item.Answer.TextAnswer
-                </td>
+                        @foreach(var meti in item.answers)
+                        {
+                            @meti.TextAnswer
+                        }
+                    </td>
               </tr>
                 
             }
