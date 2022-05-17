@@ -6,20 +6,74 @@
 
 <div class="kursy-container">
 
-        <span class="create-button">
-            <a   asp-controller="Lesson" asp-action="Create">+</a>
-            </span>
-    <table class="tabela-kursy">
-        <thead>
-            
-            <tr>
-            
-                
-                    <th>Course Name</th>
-                   
-            </tr>
-        </thead>
-        <tbody>
+      
+     <div class="lesson-content">
+        <div class="lesson-start">
+            <div class="lesson-start-title">
+                <p class="start-title">LESSON 1</p>
+            </div>
+        </div>
+        <div class="lesson-start-text">
+           Chapter 1: Conversation
+        </div>
+    </div>
+     @foreach(var item in Model)
+            {
+    <div class="lesson-zadanie">
+        <div class="title">
+            <p class="zadanie-title">ZADANIE 1</p>
+        </div>
+        <div class="tresc">
+            <p class="polecenie">
+                  @item.AssignmentText
+            </p>
+           
+            @foreach(var meti in item.answers)
+                {
+                    <script>
+                        function show(index,odp){
+                            alert(index)
+                        var x = document.getElementsByClassName(index);
+                        alert(x[0].className)
+                        if(x[1].style.display === "none"){
+
+                        x[1].style.display = "block";
+
+                        if(x[0].value === odp){
+                        x[1].style.color = "green";
+                        }else{
+                        x[1].style.color = "red";
+                        }
+                        }            
+                        }
+                    </script>
+                    var str = @meti.TextAnswer.Replace(" ", "");
+                    <input class=@str id="odp-input"  type="text"/>
+                 <div class=@str style="display: none;">
+
+                     <p class="tresc-odp">  @meti.TextAnswer </p>
+                            
+                 </div>
+                  <input type="button" value="SPRAWDZ" class="lesson-zadanie-button" onclick=" show('@str', '@meti.TextAnswer')" >
+              }
+          
+        </div>
+    </div>
+
+    <div class="lesson-zadanie">
+        <div class="title">
+            <p class="zadanie-title">CIEKAWOSTKA</p>
+        </div>
+        <div class="tresc">
+            <p class="polecenie">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum, ligula sed ullamcorper aliquet, lectus lacus pellentesque magna, a blandit arcu metus sit amet urna. Phasellus semper a sem ac varius. Fusce pulvinar luctus consectetur. Donec aliquam tristique commodo.
+            </p>
+        </div>
+    </div>
+
+
+    @*
+
           @foreach(var item in Model)
             {
                 <tr>
@@ -37,9 +91,7 @@
                 
             }
 
-        </tbody>
-    </table>
-
+       *@
    
-    
+   } 
 </div>

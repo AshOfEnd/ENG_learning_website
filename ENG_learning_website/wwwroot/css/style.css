@@ -89,7 +89,7 @@
 }
 
 .topbar-button-logout {
-	padding-left: 35px;
+	padding-left: 15px;
 	padding-right: 35px;
 	padding-top: 0px;
 	height: 60px;
@@ -206,4 +206,27 @@ margin-right:20px;
 }
 #footer{
 	text-align:center;
+
+}
+
+.premium{
+	padding-left: 100px;
+	padding-right: 25px;
+	padding-top: 13.5px;
+	height: 60px;
+	float: right;
+	font-weight: bold;
+	font-size: 23px;
+	background: linear-gradient(90deg, rgba(173, 154, 99, 1) 15%,rgba(221, 198, 135, 1) 30%, rgba(173, 154, 99, 1) 50%,rgba(221, 198, 135, 1) 75%, rgba(173, 154, 99, 1) 90%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation-duration: 1s;
+
+}
+.premium:hover{
+	background: linear-gradient(#000, #000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+.empty{
+	height: 100px;
 }
