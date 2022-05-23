@@ -5,9 +5,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Stripe;
+using ENG_learning_website.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IDBContextConnection");;
+builder.Services.AddTransient<DbInitializer>();
+
+
+
+
+
+
+
 
 builder.Services.AddDbContext<IDBContext>(options =>
     options.UseSqlServer(connectionString));;
@@ -32,10 +42,14 @@ builder.Services.AddAuthentication()
 });
 
 
+builder.Services.Configure<StripeConfig>(builder.Configuration.GetSection("Stripe"));
+
+
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ILessonService, LessonService>();
 builder.Services.AddScoped<IAssignmentService, AssignmentService>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 var app = builder.Build();
 
@@ -47,6 +61,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+SeedData();
+StripeConfiguration.ApiKey = "sk_test_51L2L91Je1w6gf5udKG8FV71gjjPOPuciJ475YrBYPmCHi6dm4vGTF3e0A9Kdpojod6jdoX88VnuI4nZsW03tFXme00zsMZWh0T";
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -62,3 +78,14 @@ app.MapControllerRoute(
     );
 
 app.Run();
+
+void SeedData()
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Seed();
+    }
+}

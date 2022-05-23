@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ENG_learning_website.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220517091458_migacja")]
-    partial class migacja
+    [Migration("20220523115219_tabele1")]
+    partial class tabele1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,6 +64,10 @@ namespace ENG_learning_website.Migrations
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
+                    b.Property<string>("curiosity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LessonId");
@@ -79,11 +83,7 @@ namespace ENG_learning_website.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"), 1L, 1);
 
-                    b.Property<string>("login")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("password")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

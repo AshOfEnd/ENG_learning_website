@@ -40,7 +40,8 @@ namespace ENG_learning_website.Controllers
 
         public  IActionResult Index(int id)
         {
-
+            var cos = HttpContext.User.Identity.Name;
+            ViewBag.Clients = _dbContext.Clients.Where(x => x.Name == cos).FirstOrDefault();
             var result= _dbContext.Assignment.Include(x=>x.answers).Where(a=>a.LessonId==id ).OrderBy(x=>x.AssignmentText).ToList();
             //var viewModel = new AnswerAsignmentModel();
             // viewModel.Assignments = _dbContext.Assignment.Include(i=>i.Answer).Where(a=>a.LessonId==id).OrderBy(i=>i.AssignmentText).ToList();

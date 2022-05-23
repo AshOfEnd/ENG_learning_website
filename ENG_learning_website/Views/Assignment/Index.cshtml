@@ -14,7 +14,14 @@
             </div>
         </div>
         <div class="lesson-start-text">
-           Chapter 1: Conversation
+              @if(!(ViewBag.Clients==null))    @* to jest if do pokazywania czy ktos ma suba *@
+           {
+                <label>chuj dziala zajebisty jestem</label>
+            }
+            else
+            {
+                <label>chuj2</label>
+            }
         </div>
     </div>
      @foreach(var item in Model)

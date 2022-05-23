@@ -7,7 +7,7 @@ namespace ENG_learning_website.Models
         public int Id { get; set; }
         public string AssignmentText { get; set; }
 
-       
+       public string curiosity { get; set; }
         public int LessonId { get; set; }
         [ForeignKey("LessonId")]
         public Lesson lesson { get; set; }

@@ -4,7 +4,7 @@
 
 namespace ENG_learning_website.Migrations
 {
-    public partial class migacja : Migration
+    public partial class tabele1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,7 @@ namespace ENG_learning_website.Migrations
                 {
                     ClientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    login = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     subscription = table.Column<bool>(type: "bit", nullable: false),
                     points = table.Column<int>(type: "int", nullable: false)
                 },
@@ -131,6 +130,7 @@ namespace ENG_learning_website.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AssignmentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    curiosity = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LessonId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

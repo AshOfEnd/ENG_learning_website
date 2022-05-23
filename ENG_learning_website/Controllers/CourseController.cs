@@ -17,7 +17,8 @@ namespace ENG_learning_website.Controllers
 
         public async  Task <IActionResult> Index()
         {
-          var data=await _service.GetAll(); 
+          
+            var data=await _service.GetAll(); 
             return View(data);
         }
 

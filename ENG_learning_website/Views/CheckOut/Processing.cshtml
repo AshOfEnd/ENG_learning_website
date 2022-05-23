@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.Extensions.Options
+@inject IOptions<ENG_learning_website.Data.StripeConfig> Stripe
+@{
+    Layout = "_Layout";
+}
+@inject UserManager<IdentityUser> UserManager
+<div class="text-center">
+    <form asp-action="Processing" asp-controller="Checkout" method="post">
+        
+            <label class="text-info">Your Payment has been successfully processed</label>
+        <br />
+        <br />
+        <p class="blockquote text-center">
+            The details of the transaction are  <br />
+            Customer : @ViewBag.Customer <br /> <br />
+            Amount : $ @ViewBag.AmountPaid 
+            <br />
+            Users: @ViewBag.Cos
+
+          @if(!(ViewBag.Clients==null))
+           {
+                <label>chuj dziala zajebisty jestem</label>
+            }
+            else
+            {
+                <label>chuj2</label>
+            }
+
+
+        </p>
+            
+                @*@if (TempData.Peek("TotalAmount") != null)
+                {
+                    var result = Convert.ToInt64(TempData.Peek("TotalAmount"));
+                    result /= 100; 
+                    <h3>Amount: @result USD has been processed successfully.</h3>
+                }*@ 
+    </form>
+
+    <div>
+       @* @if(UserManager.GetUserName(User).Contains(ViewBag.Clients))
+        {
+             <label class="text-info">Your Payment has been successfully processed</label>
+        }*@
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<ENG_learning_website.Data.StripeConfig> Stripe
+@{
+    Layout = "_Layout";
+}
+<div class="text-center">
+    <form asp-action="Processing" asp-controller="Checkout" method="post">
+      
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="@Stripe.Value.PublishableKey"
+                data-amount="100"
+                data-name="[Deveducate]"
+                data-description="Flower payments"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="en"
+                data-zip-code="true">
+        </script>
+    </form>
+</div>
