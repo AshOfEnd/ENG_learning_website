@@ -5,9 +5,20 @@
 
 <div class="kursy-container">
 
-        <span class="create-button">
+       @if(!(ViewBag.Clients==null))
+           {
+                   <span class="create-button">
             <a   asp-controller="Lesson" asp-action="Create">+</a>
             </span>
+              
+            }
+            else
+            {
+             <a asp-area=""  asp-controller="CheckOut" asp-action="Index">
+                    <label>platnosc nie powiodla sie Sproboj ponownie</label>
+                </a>
+            }
+      
     <table class="tabela-kursy">
         <thead>
             
@@ -15,6 +26,7 @@
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
                 
                     <th>Course Name</th>
+            
                    
             </tr>
         </thead>

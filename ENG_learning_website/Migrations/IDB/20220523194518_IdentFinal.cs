@@ -4,7 +4,7 @@
 
 namespace ENG_learning_website.Migrations.IDB
 {
-    public partial class chuj : Migration
+    public partial class IdentFinal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

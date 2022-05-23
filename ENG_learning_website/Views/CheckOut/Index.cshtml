@@ -3,8 +3,22 @@
 @{
     Layout = "_Layout";
 }
-<div class="text-center">
-    <form asp-action="Processing" asp-controller="Checkout" method="post">
+<div class="kursy-container">
+
+       @if(!(ViewBag.Clients==null))
+           {
+            <div class="text-center">
+
+           <a asp-area=""  asp-controller="Home" asp-action="Index">
+                    <label>posiadasz juz konto premium!!! kliknij aby wrocic</label>
+                </a>
+                </div>
+                 
+              
+            }
+            else
+            {
+                <form asp-action="Processing" asp-controller="Checkout" method="post">
       
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="@Stripe.Value.PublishableKey"
@@ -16,4 +30,12 @@
                 data-zip-code="true">
         </script>
     </form>
+
+            }
+
+            <div>
+                @ViewBag.Clients
+            </div>
+   
+
 </div>

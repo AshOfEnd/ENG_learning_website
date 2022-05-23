@@ -22,7 +22,8 @@ namespace ENG_learning_website.Controllers
         public string TotalAmmount { get; set; }
         public IActionResult Index()
         {
-     
+            var cos = HttpContext.User.Identity.Name;
+            ViewBag.Clients = _dbContext.Clients.Where(x => x.Name == cos).FirstOrDefault();
             return View();
         }
 
@@ -47,7 +48,10 @@ namespace ENG_learning_website.Controllers
                 ReceiptEmail = StripeEmail,
             };
             var ServiceCharge=new ChargeService();
-            Charge charge=ServiceCharge.Create(optionCharge);
+           
+                Charge charge = ServiceCharge.Create(optionCharge);
+          
+         
             if(charge.Status =="succeeded")
             {
                 ViewBag.AmountPaid = Convert.ToDecimal(charge.Amount) % 100 / 100 + (charge.Amount) / 100;
@@ -57,7 +61,8 @@ namespace ENG_learning_website.Controllers
                    var cos=HttpContext.User.Identity.Name;
               
                 var temp=_dbContext.Clients.Where(x=>x.Name==cos).FirstOrDefault();
-                if (temp == null) {
+                if (temp == null) 
+                {
                     Client client = new Client()
                     {
                         Name = cos.ToString(),
@@ -74,7 +79,17 @@ namespace ENG_learning_website.Controllers
                     Console.WriteLine("UZYTKOWNIK POSIADA JUZ SUBSKRYPCJE");
                 }
                     ViewBag.Clients = _dbContext.Clients.Where(x => x.Name == cos).FirstOrDefault();
-                }
+            }
+            if(charge.Status =="failed")
+            {
+                
+                return View(ViewBag.Status = charge.Status);
+            }
+            if (charge.Status == "pending")
+            {
+
+                return View(ViewBag.Status = charge.Status);
+            }
             return View();
         }
     }

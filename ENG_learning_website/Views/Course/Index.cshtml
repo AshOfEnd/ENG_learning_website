@@ -5,13 +5,21 @@
 
 <div class="kursy-container">
 
-        <span class="create-button">
+                @if(!(ViewBag.Clients==null))    @* to jest if do pokazywania czy ktos ma suba *@
+           {
+                <span class="create-button">
             <a   asp-controller="Course" asp-action="Create">+</a>
             </span>
+            }
+            else
+            {
+              
+            }
     <table class="tabela-kursy">
         <thead>
             
             <tr>
+              
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
                   <th>@Html.DisplayNameFor(model => model.Difficulty)</th>
                   

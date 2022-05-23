@@ -10,14 +10,17 @@ namespace ENG_learning_website.Controllers
     {
 
         private readonly ICourseService _service;
-        public CourseController(ICourseService service)
+        private readonly DBContext _dbcontext;
+        public CourseController(ICourseService service, DBContext dbcontext)
         {
             _service= service;
+            _dbcontext= dbcontext;
         }
 
         public async  Task <IActionResult> Index()
         {
-          
+            var cos =   HttpContext.User.Identity.Name;
+            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
             var data=await _service.GetAll(); 
             return View(data);
         }
@@ -44,6 +47,8 @@ namespace ENG_learning_website.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
+            var cos = HttpContext.User.Identity.Name;
+            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
             var courseDropDownData=await _service.getDropDownValues();
             ViewBag.Lessons = new SelectList(courseDropDownData.Lessons,"Id","Name");
             var CourseDetails = await _service.GetByIdAsync(id);

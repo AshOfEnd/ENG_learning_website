@@ -23,6 +23,8 @@ namespace ENG_learning_website.Controllers
         // GET: Dictionaries
         public async Task<IActionResult> Index()
         {
+            var cos = HttpContext.User.Identity.Name;
+            ViewBag.Clients = _context.Clients.Where(x => x.Name == cos).FirstOrDefault();
             return View(await _context.Dictionary.ToListAsync());
         }
 

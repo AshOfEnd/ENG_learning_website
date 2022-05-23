@@ -20,11 +20,16 @@
 
           @if(!(ViewBag.Clients==null))
            {
-                <label>chuj dziala zajebisty jestem</label>
+                  <a asp-area=""  asp-controller="Home" asp-action="Index">
+                    <label>platnosc zakonczona sukcesem! Kliknij aby wrocic</label>
+                </a>
+              
             }
             else
             {
-                <label>chuj2</label>
+             <a asp-area=""  asp-controller="CheckOut" asp-action="Index">
+                    <label>platnosc nie powiodla sie Sproboj ponownie</label>
+                </a>
             }
 
 

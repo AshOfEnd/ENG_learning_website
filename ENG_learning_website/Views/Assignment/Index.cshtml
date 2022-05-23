@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<Assignment>
 @{
     ViewBag.Tittle = "Assignments";
+    ViewBag.Tittle = "Clients";
 
 }
 
 <div class="kursy-container">
 
-      
+         @foreach(var item in Model)
+            {
      <div class="lesson-content">
         <div class="lesson-start">
             <div class="lesson-start-title">
-                <p class="start-title">LESSON 1</p>
+                <p class="start-title">LESSON @item.LessonId</p>
             </div>
         </div>
         <div class="lesson-start-text">
@@ -24,12 +26,12 @@
             }
         </div>
     </div>
-     @foreach(var item in Model)
-            {
+  
     <div class="lesson-zadanie">
         <div class="title">
-            <p class="zadanie-title">ZADANIE 1</p>
+            <p class="zadanie-title">ZADANIE @item.Id</p>
         </div>
+        
         <div class="tresc">
             <p class="polecenie">
                   @item.AssignmentText
@@ -73,7 +75,7 @@
         </div>
         <div class="tresc">
             <p class="polecenie">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum, ligula sed ullamcorper aliquet, lectus lacus pellentesque magna, a blandit arcu metus sit amet urna. Phasellus semper a sem ac varius. Fusce pulvinar luctus consectetur. Donec aliquam tristique commodo.
+               @item.curiosity
             </p>
         </div>
     </div>
