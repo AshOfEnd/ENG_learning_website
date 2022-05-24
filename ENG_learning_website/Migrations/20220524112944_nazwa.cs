@@ -4,7 +4,7 @@
 
 namespace ENG_learning_website.Migrations
 {
-    public partial class Service : Migration
+    public partial class nazwa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

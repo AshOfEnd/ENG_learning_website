@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ENG_learning_website.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220523194303_Service")]
-    partial class Service
+    [Migration("20220524112944_nazwa")]
+    partial class nazwa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

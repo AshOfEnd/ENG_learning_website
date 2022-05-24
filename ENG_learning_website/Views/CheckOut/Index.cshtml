@@ -10,7 +10,8 @@
             <div class="text-center">
 
            <a asp-area=""  asp-controller="Home" asp-action="Index">
-                    <label>posiadasz juz konto premium!!! kliknij aby wrocic</label>
+                    <label class="zloty-napis">
+                       POSIADASZ JUZ KONTO PREMIUM! kliknij aby wrocic</label>
                 </a>
                 </div>
                  
@@ -24,7 +25,7 @@
                 data-key="@Stripe.Value.PublishableKey"
                 data-amount="100"
                 data-name="[Deveducate]"
-                data-description="Flower payments"
+                data-description="Payments"
                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                 data-locale="en"
                 data-zip-code="true">
