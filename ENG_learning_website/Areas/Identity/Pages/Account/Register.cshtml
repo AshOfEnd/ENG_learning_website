@@ -9,16 +9,19 @@
       <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <p class="login-title"> CREATE A NEW ACCOUNT </p>
             
-           <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-           <label asp-for="Input.Email" class="form-label"></label>
+           <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="E-mail" 
+           onfocus="this.placeholder=''" onblur="this.placeholder='E-mail'"/>
+           <!--<label asp-for="Input.Email" class="form-label"></label> -->
            <span asp-validation-for="Input.Email" class="text-danger"></span>
            <br/>
-           <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-           <label asp-for="Input.Password" class="form-label"></label>
+           <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password"
+           onfocus="this.placeholder=''" onblur="this.placeholder='Password'"/>     
+           <!--<label asp-for="Input.Password" class="form-label"></label>-->
            <span asp-validation-for="Input.Password" class="text-danger"></span>
            <br/>
-           <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-           <label asp-for="Input.ConfirmPassword"></label>
+           <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true"   placeholder="Confirm password"
+           onfocus="this.placeholder=''" onblur="this.placeholder='Confirm password'"/>
+           <!--<label asp-for="Input.ConfirmPassword"></label>-->
            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
            <br/>
           <br/>

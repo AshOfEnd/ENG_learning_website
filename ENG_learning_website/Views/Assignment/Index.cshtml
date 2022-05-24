@@ -18,11 +18,11 @@
         <div class="lesson-start-text">
               @if(!(ViewBag.Clients==null))    @* to jest if do pokazywania czy ktos ma suba *@
            {
-                <label>chuj dziala zajebisty jestem</label>
+                <label>Lekcję czas zacząć!</label>
             }
             else
             {
-                <label>chuj2</label>
+                <label>Aby dodac kurs - wykup konto premium</label>
             }
         </div>
     </div>
@@ -41,9 +41,9 @@
                 {
                     <script>
                         function show(index,odp){
-                            alert(index)
+                           
                         var x = document.getElementsByClassName(index);
-                        alert(x[0].className)
+                       
                         if(x[1].style.display === "none"){
 
                         x[1].style.display = "block";
@@ -81,6 +81,10 @@
     </div>
 
 
+    <input type="button" value="Zakoncz lekcje" class="lesson-zadanie-button" onclick="history.back()" >
+        
+   
+        
     @*
 
           @foreach(var item in Model)
@@ -103,4 +107,4 @@
        *@
    
    } 
-</div>
+</>

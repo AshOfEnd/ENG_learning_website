@@ -4,7 +4,11 @@
 
 namespace ENG_learning_website.Migrations
 {
+<<<<<<<< HEAD:ENG_learning_website/Migrations/20220524130752_tabele1.cs
     public partial class tabele1 : Migration
+========
+    public partial class nazwa : Migration
+>>>>>>>> 807164da25f3a2eb44335b754a2f41aed2941385:ENG_learning_website/Migrations/20220524112944_nazwa.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

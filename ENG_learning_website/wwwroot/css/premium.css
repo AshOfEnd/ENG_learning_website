@@ -5,3 +5,12 @@
     width: 60%;
     text-align: center;
 }
+.zloty-napis{
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(173, 154, 99, 1) 15%,rgba(221, 198, 135, 1) 30%, rgba(173, 154, 99, 1) 50%,rgba(221, 198, 135, 1) 75%, rgba(173, 154, 99, 1) 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation-duration: 1s;
+    text-transform: uppercase;
+    padding: 30px 0px 30px 0px ;
+}
