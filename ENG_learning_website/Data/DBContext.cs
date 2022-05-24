@@ -43,7 +43,7 @@ namespace ENG_learning_website.Data
         public DbSet<Language> Languages { get; set; } 
         public DbSet<Assignment> Assignment { get; set; } 
         public DbSet<Answers> Answers { get; set; } 
-        public DbSet<Client> Clients { get; set; } 
+        public DbSet<Client> Client { get; set; } 
 
      
 

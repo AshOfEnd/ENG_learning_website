@@ -18,7 +18,7 @@ namespace ENG_learning_website.Controllers
         public async Task<IActionResult> Index()
         {
             var cos = HttpContext.User.Identity.Name;
-            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _dbcontext.Client.Where(x => x.Name == cos).FirstOrDefault();
             var dropDownData = await _service.getDropDownValues();
             ViewBag.Courses = new SelectList(dropDownData.Courses, "Id", "Name");
             var data = await _service.GetAll();
@@ -30,7 +30,7 @@ namespace ENG_learning_website.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var cos = HttpContext.User.Identity.Name;
-            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _dbcontext.Client.Where(x => x.Name == cos).FirstOrDefault();
             var lessonDetails = await _service.GetByIdAsync(id);
 
             if (lessonDetails == null) return View();

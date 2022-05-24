@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Client>
+@{
+    ViewData["Title"] = "Course";
+}
+<div class="kursy-container">
+
+         
+                <span class="create-button">
+            <a   asp-controller="Admin" asp-action="Create">+</a>
+            </span>
+            
+           
+    <table class="tabela-kursy">
+        <thead>
+            
+            <tr>
+              
+               
+                  
+                   
+                   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in  Model)
+            {
+            <tr>
+                <td >
+                   @item.Name
+
+                </td>
+               <td >
+                   @item.subscription
+                </td>
+                <td>
+            <a   asp-action="Details" asp-route-id="@item.ClientId" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+   
+    
+</div>

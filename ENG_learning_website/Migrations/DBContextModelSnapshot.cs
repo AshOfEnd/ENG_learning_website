@@ -93,7 +93,7 @@ namespace ENG_learning_website.Migrations
 
                     b.HasKey("ClientId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Client");
                 });
 
             modelBuilder.Entity("ENG_learning_website.Models.ClientLang", b =>

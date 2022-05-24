@@ -1,0 +1,38 @@
+﻿@model ENG_learning_website.Models.Client
+@{
+    ViewData["Title"] = "Create";
+}
+
+<p class="create-kurs">CREATE COURSE</p>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="kurs-tworzenie-zawartosc">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+            <div class="nazwa-kurs">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="nazwa-kurs5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+           <div>
+                <label asp-for="Name"></label>
+
+            </div>
+            <div>
+                <select asp-for="Name" asp-items="ViewBag.Registered"></select>
+  
+         @*   <div class="nazwa-kurs">
+                <label asp-for="Difficulty"></label>
+            </div>
+            <div class="nazwa-kurs5">
+                <input asp-for="Difficulty" min="1" max="5" class="form-control"  />
+            </div>
+            <span asp-validation-for="Difficulty" class="text-danger"></span>
+           *@
+            <input asp-action="Index" type="submit"  class="button-kurs" value="Back to List" />
+            @Html.AntiForgeryToken()
+            <input type="submit" class="button-kurs" value="Create" />
+        </div>
+</form>

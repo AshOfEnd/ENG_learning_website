@@ -3,13 +3,16 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+
 @if (SignInManager.IsSignedIn(User))
 {
     
         <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> 
     <div class="topbar-button-mail">
-                    @UserManager.GetUserName(User)
-                </div></a>
+                 @UserManager.GetUserName(User)
+          
+
+        </div></a>
         <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button id="logout" type="submit" class="topbar-button-logout">LOGOUT </button>
         </form>
@@ -19,7 +22,6 @@
                     PREMIUM
                 </div>
     </a>
-
 }
 else
 {

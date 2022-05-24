@@ -1,6 +1,7 @@
 ﻿using ENG_learning_website.Data;
 using ENG_learning_website.Data.services;
 using ENG_learning_website.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -17,10 +18,11 @@ namespace ENG_learning_website.Controllers
             _dbcontext= dbcontext;
         }
 
+        [Authorize(Roles ="Admin")]
         public async  Task <IActionResult> Index()
         {
             var cos =   HttpContext.User.Identity.Name;
-            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _dbcontext.Client.Where(x => x.Name == cos).FirstOrDefault();
             var data=await _service.GetAll(); 
             return View(data);
         }
@@ -48,7 +50,7 @@ namespace ENG_learning_website.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var cos = HttpContext.User.Identity.Name;
-            ViewBag.Clients = _dbcontext.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _dbcontext.Client.Where(x => x.Name == cos).FirstOrDefault();
             var courseDropDownData=await _service.getDropDownValues();
             ViewBag.Lessons = new SelectList(courseDropDownData.Lessons,"Id","Name");
             var CourseDetails = await _service.GetByIdAsync(id);

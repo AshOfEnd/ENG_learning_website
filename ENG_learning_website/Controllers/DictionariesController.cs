@@ -24,7 +24,7 @@ namespace ENG_learning_website.Controllers
         public async Task<IActionResult> Index()
         {
             var cos = HttpContext.User.Identity.Name;
-            ViewBag.Clients = _context.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _context.Client.Where(x => x.Name == cos).FirstOrDefault();
             return View(await _context.Dictionary.ToListAsync());
         }
 

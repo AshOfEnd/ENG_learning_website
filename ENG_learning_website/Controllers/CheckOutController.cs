@@ -23,7 +23,7 @@ namespace ENG_learning_website.Controllers
         public IActionResult Index()
         {
             var cos = HttpContext.User.Identity.Name;
-            ViewBag.Clients = _dbContext.Clients.Where(x => x.Name == cos).FirstOrDefault();
+            ViewBag.Clients = _dbContext.Client.Where(x => x.Name == cos).FirstOrDefault();
             return View();
         }
 
@@ -48,48 +48,52 @@ namespace ENG_learning_website.Controllers
                 ReceiptEmail = StripeEmail,
             };
             var ServiceCharge=new ChargeService();
-           
+            try
+            {
                 Charge charge = ServiceCharge.Create(optionCharge);
-          
-         
-            if(charge.Status =="succeeded")
-            {
-                ViewBag.AmountPaid = Convert.ToDecimal(charge.Amount) % 100 / 100 + (charge.Amount) / 100;
-                ViewBag.Customer = customer.Name;
-                //var temp = User.Identity.Name;
-                //var baza = _dbContext.Users.Where(x => x.UserName == temp).Select(x=>x.Email);
-                   var cos=HttpContext.User.Identity.Name;
-              
-                var temp=_dbContext.Clients.Where(x=>x.Name==cos).FirstOrDefault();
-                if (temp == null) 
+
+
+                if (charge.Status == "succeeded")
                 {
-                    Client client = new Client()
+                    ViewBag.AmountPaid = Convert.ToDecimal(charge.Amount) % 100 / 100 + (charge.Amount) / 100;
+                    ViewBag.Customer = customer.Name;
+                    //var temp = User.Identity.Name;
+                    //var baza = _dbContext.Users.Where(x => x.UserName == temp).Select(x=>x.Email);
+                    var cos = HttpContext.User.Identity.Name;
+
+                    var temp = _dbContext.Client.Where(x => x.Name == cos).FirstOrDefault();
+                    if (temp == null)
                     {
-                        Name = cos.ToString(),
-                        subscription = true,
-                        points = 0,
-                    };
-                        _dbContext.Clients.Add(client);
+                        Client client = new Client()
+                        {
+                            Name = cos.ToString(),
+                            subscription = true,
+                            points = 0,
+                        };
+                        _dbContext.Client.Add(client);
 
-                    //   temp.Subscription = true;
-                    _dbContext.SaveChanges();
+                        //   temp.Subscription = true;
+                        _dbContext.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine("UZYTKOWNIK POSIADA JUZ SUBSKRYPCJE");
+                    }
+                    ViewBag.Clients = _dbContext.Client.Where(x => x.Name == cos).FirstOrDefault();
                 }
-                else
+                if (charge.Status == "failed")
                 {
-                    Console.WriteLine("UZYTKOWNIK POSIADA JUZ SUBSKRYPCJE");
-                }
-                    ViewBag.Clients = _dbContext.Clients.Where(x => x.Name == cos).FirstOrDefault();
-            }
-            if(charge.Status =="failed")
-            {
-                
-                return View(ViewBag.Status = charge.Status);
-            }
-            if (charge.Status == "pending")
-            {
 
-                return View(ViewBag.Status = charge.Status);
+                    return View(ViewBag.Status = charge.Status);
+                }
+                if (charge.Status == "pending")
+                {
+
+                    return View(ViewBag.Status = charge.Status);
+                }
             }
+            catch (Exception ex)
+            { Console.WriteLine(ex.Message); }
             return View();
         }
     }

@@ -22,7 +22,7 @@ builder.Services.AddTransient<DbInitializer>();
 builder.Services.AddDbContext<IDBContext>(options =>
     options.UseSqlServer(connectionString));;
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<IDBContext>();;
 
 // Add services to the container.

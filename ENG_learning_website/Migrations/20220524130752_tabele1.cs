@@ -4,12 +4,12 @@
 
 namespace ENG_learning_website.Migrations
 {
-    public partial class Service : Migration
+    public partial class tabele1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Clients",
+                name: "Client",
                 columns: table => new
                 {
                     ClientId = table.Column<int>(type: "int", nullable: false)
@@ -20,7 +20,7 @@ namespace ENG_learning_website.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clients", x => x.ClientId);
+                    table.PrimaryKey("PK_Client", x => x.ClientId);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,9 +68,9 @@ namespace ENG_learning_website.Migrations
                 {
                     table.PrimaryKey("PK_ClientLang", x => new { x.ClientId, x.LangId });
                     table.ForeignKey(
-                        name: "FK_ClientLang_Clients_ClientId",
+                        name: "FK_ClientLang_Client_ClientId",
                         column: x => x.ClientId,
-                        principalTable: "Clients",
+                        principalTable: "Client",
                         principalColumn: "ClientId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -208,7 +208,7 @@ namespace ENG_learning_website.Migrations
                 name: "Assignment");
 
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "Client");
 
             migrationBuilder.DropTable(
                 name: "Lessons");
