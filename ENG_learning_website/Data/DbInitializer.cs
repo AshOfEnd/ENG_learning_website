@@ -23,7 +23,7 @@ namespace ENG_learning_website.Data
                         new Course()
                         {
                            Name ="kurs1",
-                           Difficulty =2
+                           Difficulty =1
                         },
                         new Course()
                         {
@@ -44,14 +44,14 @@ namespace ENG_learning_website.Data
                 {
                         new Lesson()
                         {
-                            Name="lesson1",
+                            Name="lesson 1.1",
                             NoobsHolder = 2,
                             CourseId=1,
 
                         },
                        new Lesson()
                         {
-                            Name="lesson2",
+                            Name="lesson 1.2",
                             NoobsHolder = 2,
                             CourseId=1,
 
@@ -59,14 +59,14 @@ namespace ENG_learning_website.Data
 
                          new Lesson()
                         {
-                            Name="lesson3",
+                            Name="lesson 2.1",
                             NoobsHolder = 2,
                             CourseId=2,
 
                         },
                        new Lesson()
                         {
-                            Name="lesson4",
+                            Name="lesson 2.2",
                             NoobsHolder = 2,
                             CourseId=2,
 

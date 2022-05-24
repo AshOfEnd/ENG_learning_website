@@ -28,21 +28,30 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach(var item in Model)
             {
-            <tr>
-                <td >
-                   @item.Name
-
-                </td>
-               <td >
-                   @item.Difficulty
-
-                </td>
-                <td>
-                    <a   asp-action="Details" asp-route-id="@item.Id" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
-                </td>
-            </tr>
+                @if(!(ViewBag.Clients==null)){
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Difficulty</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
+                        </td>
+                    </tr>
+                    }else{
+                        @if(@item.Name.Contains("premium")){
+                            continue;
+                        }else{
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Difficulty</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id" > &nbsp;&nbsp; &#9655; &nbsp;&nbsp; </a>
+                                </td>
+                            </tr>
+                        }
+                    }        
             }
         </tbody>
     </table>

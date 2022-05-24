@@ -25,8 +25,9 @@
 	 float:left;
  }
  .logo{
-	 width:90%;
-	height:85px;
+	 width:50%;
+	height:65px;
+	 margin: 10px 0px 0px 50px ;
  }
  
  .topbar-button-button{
@@ -223,10 +224,12 @@ margin-right:20px;
 	animation-duration: 1s;
 
 }
-.premium:hover{
+.premium:hover {
 	background: linear-gradient(#000, #000);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+
 .empty{
 	height: 100px;
 }
